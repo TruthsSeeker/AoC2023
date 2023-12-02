@@ -41,7 +41,8 @@ fn parse_calibration_letters(calibration: &String) -> u32 {
         if c.is_digit(10) {
             value.push(c.to_digit(10).unwrap());
             buffer.clear();
-        } else {
+        }
+        {
             buffer.push_back(c);
             if let Some((v, i)) = check_buffer(&buffer) {
                 value.push(v);
@@ -57,25 +58,32 @@ fn check_buffer(buffer: &VecDeque<char>) -> Option<(u32, usize)> {
     let string = buffer.iter().cloned().collect::<String>();
     if let Some(i) = string.find("one") {
         return Some((1, i));
-    } else if let Some(i) = string.find("two") {
+    } 
+    if let Some(i) = string.find("two") {
         return Some((2, i));
-    } else if let Some(i) = string.find("three") {
-        return Some((3, i));
-    } else if let Some(i) = string.find("four") {
-        return Some((4, i));
-    } else if let Some(i) = string.find("five") {
-        return Some((5, i));
-    } else if let Some(i) = string.find("six") {
-        return Some((6, i));
-    } else if let Some(i) = string.find("seven") {
-        return Some((7, i));
-    } else if let Some(i) = string.find("eight") {
-        return Some((8, i));
-    } else if let Some(i) = string.find("nine") {
-        return Some((9, i));
-    } else {
-        return None;
     }
+    if let Some(i) = string.find("three") {
+        return Some((3, i));
+    }
+    if let Some(i) = string.find("four") {
+        return Some((4, i));
+    }
+    if let Some(i) = string.find("five") {
+        return Some((5, i));
+    }
+    if let Some(i) = string.find("six") {
+        return Some((6, i));
+    }
+    if let Some(i) = string.find("seven") {
+        return Some((7, i));
+    }
+    if let Some(i) = string.find("eight") {
+        return Some((8, i));
+    }
+    if let Some(i) = string.find("nine") {
+        return Some((9, i));
+    }
+    None
 }
 
 #[cfg(test)]
